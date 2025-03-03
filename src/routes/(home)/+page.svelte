@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Button from '$lib/components/ui/button/button.svelte';
-import { Icon, MagnifyingGlass } from 'svelte-hero-icons';
+	import { Icon, MagnifyingGlass } from 'svelte-hero-icons';
+	import { goto } from '$app/navigation';
 
 	let input_content = $state('');
 
@@ -10,7 +11,7 @@ import { Icon, MagnifyingGlass } from 'svelte-hero-icons';
 			const search = input_content.trim();
 			if (search) {
 				const encoded = encodeURIComponent(search);
-				window.location.href = `/search?search=${encoded}`;
+				goto(`/search?search=${encoded}`);
 			}
 		}
 	};

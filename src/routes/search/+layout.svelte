@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import Button from '$lib/components/ui/button/button.svelte';
 import { Icon, MagnifyingGlass, XMark } from 'svelte-hero-icons';
 
@@ -16,7 +17,7 @@ import { Icon, MagnifyingGlass, XMark } from 'svelte-hero-icons';
 		const searchInput = search.trim();
 		if (search) {
 			const encoded = encodeURIComponent(searchInput);
-			window.location.href = `/search?search=${encoded}`;
+			goto(`/search?search=${encoded}`);
 		}
 	}
 	function handleKeyDown(event: KeyboardEvent) {
