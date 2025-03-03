@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { Icon, MagnifyingGlass, XMark } from 'svelte-hero-icons';
+	import Button from '$lib/components/ui/button/button.svelte';
+import { Icon, MagnifyingGlass, XMark } from 'svelte-hero-icons';
 
 	let { data, children } = $props();
 
@@ -35,28 +36,23 @@
 >
 	<img src="upsetgal-logo.webp" alt="logo" class="h-16 -mt-2" />
 	<div class="rounded-full w-full max-w-3xl flex gap-2 justify-between items-center
-	shadow-md shadow-zinc-200 border
-	border-zinc-200 duration-200 transition hover:border-amber-500 focus-within:border-amber-500
-	bg-zinc-50 focus-within:bg-pink-100 hover:bg-pink-100
+	shadow-sm shadow-primary/20 border border-secondary duration-200 transition hover:border-amber-500 focus-within:border-amber-500
+	bg-secondary focus-within:bg-pink-100 hover:bg-pink-100 dark:focus-within:bg-amber-800 dark:hover:bg-amber-800
 		"
 	>
 		<input
-			class="flex-1 outline-none text-zinc-800 bg-transparent py-2 px-4"
+			class="flex-1 outline-none text-foreground bg-transparent py-2 px-4"
 			bind:value={search}
 			onkeydown={handleKeyDown}
 		/>
 		{#if showClearButton}
-			<button class="rounded-full h-full block p-1 bg-transparent
-				hover:bg-pink-500 transition duration-200
-				text-zinc-600 hover:text-zinc-50"
-				onclick={clearSearch}
-				>
+			<Button variant="ghost" size="icon" onclick={clearSearch}>
 				<Icon src={XMark} solid size="16" />
-			</button>
+			</Button>
 		{/if}
 		<button class="rounded-full h-full block p-3 bg-transparent
 		hover:bg-pink-500 transition duration-200
-		text-zinc-600 hover:text-zinc-50"
+		text-muted-foreground hover:text-foreground"
 		onclick={handleButtonClick}
 		>
 			<Icon src={MagnifyingGlass} solid size="20" />
