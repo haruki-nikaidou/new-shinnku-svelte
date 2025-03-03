@@ -4,15 +4,15 @@
     import { filesize } from "filesize";
 
     interface Props {
-        title: string;
+        name: string;
         size: number;
         uuid: string;
-        updated_at: string;
-        created_at: string;
+        updated_at: Date;
+        created_at: Date;
         download_provider: string;
     }
 
-    let { title, uuid, size, updated_at, created_at, download_provider }: Props = $props();
+    let { name: title, uuid, size, updated_at, created_at, download_provider }: Props = $props();
 
 </script>
 
@@ -20,12 +20,12 @@
     <Card.Header>
         <Card.Title>{title}</Card.Title>
     </Card.Header>
-    <Card.Content class="text-sm text-muted-foreground">
+    <Card.Content class="text-xs text-muted-foreground">
         <p>大小：{filesize(size)}</p>
         <p>更新时间：{updated_at.toLocaleString()}</p>
         <p>创建时间：{created_at.toLocaleString()}</p>
     </Card.Content>
     <Card.Footer>
-        <Button>下载</Button>
+        <Button variant="destructive" href={`/download/${uuid}`}>下载</Button>
     </Card.Footer>
 </Card.Root>
